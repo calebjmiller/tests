@@ -1,4 +1,5 @@
 % my augmented batch file for sim_AM_sigma_rep.m
+% la di da di da
 
 % PATHS
 addpath(genpath('/home/cami1103/Desktop/repos/repos'))
@@ -40,9 +41,11 @@ eta
     % changed the call input to eta_seed
     [eta_est, sigma_j_est, tau_est] = sim_AM_sigma_rep(R, eta_seed, eta, sigma_j, tau);
     %%%storing in the cell
-    eta_est_cell{seed} = eta_est;
-    sigma_j_est_cell{seed} = sigma_j_est;
-    tau_est_cell{seed} = tau_est;
+    % used to be entering the value at spot seed but deleted loop so made
+    % it enter at 1
+    eta_est_cell{1} = eta_est;
+    sigma_j_est_cell{1} = sigma_j_est;
+    tau_est_cell{1} = tau_est;
 %end
 
 %%%putting all the guesses together
@@ -51,8 +54,8 @@ sigma_j_est_all = cell2mat(sigma_j_est_cell);
 tau_est_all = cell2mat(tau_est_cell);
 
 %%%saving the reults
-%filename = ['sim_rep', num2str(eta_seed), '.mat'];
-%save(filename, 'eta_est_all', 'sigma_j_est_all', 'tau_est_all', 'eta', 'sigma_j', 'tau')
+filename = ['sim_rep', num2str(eta_seed), '.mat'];
+save(filename, 'eta_est_all', 'sigma_j_est_all', 'tau_est_all', 'eta', 'sigma_j', 'tau')
 
 %print it
 eta_est_all
